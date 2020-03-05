@@ -1,16 +1,18 @@
 import * as React from 'react';
-import '../../scss/components/atoms/FinderFlame.scss'
+import '../../scss/components/atoms/LinkLabel.scss'
 
-interface linkLabel {
+interface LinkWord {
     src: String
+    title: String
 }
 
-const LinkLabel = (props: linkLabel) => {
+const LinkWord = (props: LinkWord) => {
     return (
-        <a href={`${props.src}`}>
+        <a className={'link-label'} href={`${props.src}`}>
+            {props.title}
         </a>
     )
 }
 
-export default LinkLabel
+export default LinkWord
 ;

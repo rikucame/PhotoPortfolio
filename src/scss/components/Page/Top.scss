@@ -2,4 +2,25 @@
   text-align: center;
   width: 100vw;
   height: 100vh;
+  position: relative;
+  overflow: hidden;
+  .vertically-fit {
+    height: 100.1vh;
+    width: auto;
+  }
+
+  .horizontally-fit {
+    width: 100.1vw;
+    height: auto;
+  }
+
+  .menu-with-finder-flame {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+
+}
+
