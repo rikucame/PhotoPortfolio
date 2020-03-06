@@ -1,8 +1,7 @@
 import * as React from 'react';
-import LinkList from './LinkList';
+import LinkList from '../molecules/LinkList';
 import FinderFlame from '../atoms/FinderFlame';
-import '../../scss/components/molecules/MenuWithFinderFlame.scss'
-import ClassNames from 'classnames';
+import '../../scss/components/organisms/MenuWithFinderFlame.scss'
 
 const {useState, useEffect} = React;
 
