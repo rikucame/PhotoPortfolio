@@ -20,9 +20,11 @@ const BackgroundPhoto = () => {
         'horizontally-fit': isWide,
         'vertically-fit': !isWide,
     });
+
+    const photoPath = `${process.env.PUBLIC_URL}/photos/${photoNames[currentPhoto]}.jpg`;
     window.addEventListener('resize', () => setIsWide(CheckWidthHeight()));
     
-    return <Photo fileName={photoNames[currentPhoto]} className={backgroundImageClass} />
+    return <Photo src={photoPath} className={backgroundImageClass} />
 }
 
 export default BackgroundPhoto
