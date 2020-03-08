@@ -3,7 +3,7 @@ import '../../scss/components/pages/Top.scss';
 import BackgroundPhoto from '../molecules/BackgroundPhoto';
 import MenuWithFinderFlame from '../organisms/MenuWithFinderFlame';
 
-const Top = () => {
+export default () => {
     
   return (
     <div className="top">
@@ -12,5 +12,3 @@ const Top = () => {
     </div>
   );
 }
-
-export default Top;

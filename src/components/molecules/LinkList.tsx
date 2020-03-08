@@ -8,8 +8,8 @@ import LinkLabel from '../atoms/LinkLabel';
 
 const LinkList = () => {
     const links = [
-        {title:'POHOTOS', src:'/#'},
-        {title:'ABOUT', src:'/#'},
+        {title:'POHOTOS', src:'/photos'},
+        {title:'ABOUT', src:'/about'},
         {title:'CONTACT', src:'/#'},
     ]
     return(
