@@ -1,16 +1,11 @@
 import * as React from 'react';
 import LinkLabel from '../atoms/LinkLabel';
 
-// interface linkListInterface {
-//     text: String
-//     src: String
-// }
-
 const LinkList = () => {
     const links = [
         {title:'POHOTOS', src:'/photos'},
         {title:'ABOUT', src:'/about'},
-        {title:'CONTACT', src:'/#'},
+        {title:'CONTACT', src:'/contact'},
     ]
     return(
         <ul className='link-list'>
