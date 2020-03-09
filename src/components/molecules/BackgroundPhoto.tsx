@@ -9,7 +9,8 @@ const {useState, useEffect} = React;
 const CheckWidthHeight = () => {
   const width = window.outerWidth
   const height = window.outerHeight
-  return ( height / width < 0.66666666 ? true : false);
+  console.log(height / width);
+  return ( height / width < 0.6643 ? true : false);
 }
 
 const BackgroundPhoto = () => {
