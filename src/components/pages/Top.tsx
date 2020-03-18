@@ -1,14 +1,23 @@
 import React from 'react';
 import '../../scss/components/pages/Top.scss';
-import BackgroundPhoto from '../molecules/BackgroundPhoto';
+import AnimationBackgroundPhoto from '../organisms/AnimationBacgroundPhoto';
 import MenuWithFinderFlame from '../organisms/MenuWithFinderFlame';
+import styled from 'styled-components';
 
 export default () => {
     
   return (
-    <div className="top">
+    <Top>
       <MenuWithFinderFlame />
-      <BackgroundPhoto /> 
-    </div>
+      <AnimationBackgroundPhoto /> 
+    </Top>
   );
 }
+
+const Top = styled.div`
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+`

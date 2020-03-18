@@ -1,13 +1,15 @@
 import * as React from 'react';
-import '../../scss/components/atoms/Photo.scss'
+import styled from 'styled-components';
 
-interface photo {
-    src: String
-    className?: String
+interface propsInterface {
+    src: string
+    className?: string
 }
 
-const Photo = (props: photo) => {
-    return <img className={`photo ${props.className}`} src={`${props.src}`} />
+const photo = (props: propsInterface) => {
+    return <Photo className={`photo ${props.className}`} src={props.src} />
 }
 
-export default Photo;
+const Photo = styled.img``
+
+export default photo;

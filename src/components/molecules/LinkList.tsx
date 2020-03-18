@@ -1,19 +1,36 @@
 import * as React from 'react';
-import LinkLabel from '../atoms/LinkLabel';
+import styled from  'styled-components';
+import defaultLinkText from '../atoms/LinkText';
+import { prependOnceListener } from 'cluster';
 
-const LinkList = () => {
+interface propsInterface {
+    className?: string
+}
+
+const linkList = (props: propsInterface) => {
     const links = [
         {title:'POHOTOS', src:'/photos'},
         {title:'ABOUT', src:'/about'},
         {title:'CONTACT', src:'/contact'},
     ]
     return(
-        <ul className='link-list'>
+        <LinkList className={props.className}>
             {links.map((link) => {
-            return(<LinkLabel src={link.src} title={link.title} />)
+            return(<LinkText src={link.src} title={link.title} />)
             })}
-        </ul>
+        </LinkList>
     )
 }
 
-export default LinkList;
+
+const LinkText = styled(defaultLinkText)`
+    font-size: 4.5vh;
+ `
+
+const LinkList = styled.ul`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+ `
+
+ export default linkList;

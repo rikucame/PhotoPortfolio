@@ -1,7 +1,7 @@
 import React from 'react';
-import Photo from '../atoms/Photo';
+import defaultBackgroundPhoto from '../atoms/backgroundPhoto';
 import ClassNames from 'classnames';
-import '../../scss/components/molecules/BackgroundPhoto.scss';
+import styled from 'styled-components';
 
 
 const {useState, useEffect} = React;
@@ -9,11 +9,10 @@ const {useState, useEffect} = React;
 const CheckWidthHeight = () => {
   const width = window.outerWidth
   const height = window.outerHeight
-  console.log(height / width);
-  return ( height / width < 0.6643 ? true : false);
+  return ( height / width < 0.66666666 ? true : false);
 }
 
-const BackgroundPhoto = () => {
+const AnimationBackgroundPhoto = () => {
     const [photoNames, setPhotoNames] = useState(['01', '02', '03']);
     const [currentPhoto, setCurrentPhoto] = useState(2);
     const [isWide, setIsWide] = useState(CheckWidthHeight());
@@ -22,10 +21,22 @@ const BackgroundPhoto = () => {
         'vertically-fit': !isWide,
     });
 
-    const photoPath = `${process.env.PUBLIC_URL}/photos/${photoNames[currentPhoto]}.jpg`;
+    const photoPath = `${process.env.PUBLIC_URL}/photo/background/${photoNames[currentPhoto]}.jpg`;
     window.addEventListener('resize', () => setIsWide(CheckWidthHeight()));
     
-    return <Photo src={photoPath} className={backgroundImageClass} />
+    return <BackgroundPhoto url={photoPath} />
 }
 
-export default BackgroundPhoto
+const BackgroundPhoto = styled(defaultBackgroundPhoto)`
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+`
+
+
+export default AnimationBackgroundPhoto
+
+
+
+// export default animationBackgroundPhoto;
