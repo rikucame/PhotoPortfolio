@@ -16,9 +16,8 @@ const linkText = (props: propsInterface) => {
 };
 
 const LinkText = styled.a`
-  @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:100,300,400|Major+Mono+Display&display=swap");
   text-decoration: none;
-  color: inherit;
+  color: #000;
   font-family: "IBM Plex Mono", monospace, sans-serif;
   font-weight: 100;
 `;
