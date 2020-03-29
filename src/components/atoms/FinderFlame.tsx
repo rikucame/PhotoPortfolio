@@ -16,8 +16,9 @@ const finderFlame = (props: propsInterface) => {
 
 const boxStyle = {
   length: "9vw",
-  maxLength: "60px",
-  borderParam: "2px solid #222"
+  minLength: "40px",
+  maxLength: "80px",
+  borderParam: "1px solid #222"
 };
 
 const FinderFlameWrap = styled.div`
@@ -37,6 +38,8 @@ const FinderFlameTop = styled.div`
     top: 0;
     width: ${boxStyle.length};
     height: ${boxStyle.length};
+    min-width: ${boxStyle.minLength};
+    min-height: ${boxStyle.minLength};
     max-width: ${boxStyle.maxLength};
     max-height: ${boxStyle.maxLength};
     border-top: ${boxStyle.borderParam};
@@ -60,6 +63,8 @@ const FinderFlameBottom = styled.div`
     bottom: 0;
     width: ${boxStyle.length};
     height: ${boxStyle.length};
+    min-width: ${boxStyle.minLength};
+    min-height: ${boxStyle.minLength};
     max-width: ${boxStyle.maxLength};
     max-height: ${boxStyle.maxLength};
     border-bottom: ${boxStyle.borderParam};

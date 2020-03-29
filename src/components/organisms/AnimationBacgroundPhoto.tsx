@@ -1,5 +1,5 @@
 import React from "react";
-import defaultBackgroundPhoto from "../atoms/backgroundPhoto";
+import defaultBackgroundPhoto from "../atoms/BackgroundPhoto";
 import ClassNames from "classnames";
 import styled from "styled-components";
 
@@ -12,16 +12,24 @@ const CheckWidthHeight = () => {
 };
 
 const AnimationBackgroundPhoto = () => {
-  const [photoNames, setPhotoNames] = useState(["01", "02", "03"]);
-  const [currentPhoto, setCurrentPhoto] = useState(2);
+  const backgroundPhotoDirectory = `${process.env.PUBLIC_URL}/photo/background/`;
+  const [photoPath, setPhotoPath] = useState(
+    `${backgroundPhotoDirectory}01.jpg`
+  );
+  const [currentPhoto, setCurrentPhoto] = useState(1);
   const [isWide, setIsWide] = useState(CheckWidthHeight());
   const backgroundImageClass = ClassNames({
     "horizontally-fit": isWide,
     "vertically-fit": !isWide
   });
 
-  const photoPath = `${process.env.PUBLIC_URL}/photo/background/${photoNames[currentPhoto]}.jpg`;
-  window.addEventListener("resize", () => setIsWide(CheckWidthHeight()));
+  useEffect(() => {
+    setTimeout(() => {
+      setCurrentPhoto(currentPhoto === 4 ? 1 : currentPhoto + 1);
+      setPhotoPath(`${backgroundPhotoDirectory}0${currentPhoto}.jpg`);
+      console.log("hoge");
+    }, 4000);
+  }, [currentPhoto]);
 
   return <BackgroundPhoto url={photoPath} />;
 };
@@ -34,5 +42,3 @@ const BackgroundPhoto = styled(defaultBackgroundPhoto)`
 `;
 
 export default AnimationBackgroundPhoto;
-
-// export default animationBackgroundPhoto;

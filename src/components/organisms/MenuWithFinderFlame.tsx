@@ -4,9 +4,14 @@ import defaultLinkList from "../molecules/LinkList";
 import defaultFinderFlame from "../atoms/FinderFlame";
 
 const menuWithFinderFlame = () => {
+  const links = [
+    { title: "POHOTOS", src: "/photos" },
+    { title: "ABOUT", src: "/about" },
+    { title: "CONTACT", src: "/contact" }
+  ];
   return (
     <MenuWithFinderFlame>
-      <LinkList />
+      <LinkList links={links} />
       <FinderFlame />
     </MenuWithFinderFlame>
   );
@@ -26,7 +31,7 @@ const LinkList = styled(defaultLinkList)`
     margin-left: calc(10% + 1px);
     transform: translateY(60%);
     padding-left: 1px;
-    border-left: solid 1px #333;
+    border-left: solid 1px #222;
     z-index: 100;
   }
 `;

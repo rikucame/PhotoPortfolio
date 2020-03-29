@@ -1,5 +1,4 @@
 import React from "react";
-import "../../scss/components/pages/Top.scss";
 import AnimationBackgroundPhoto from "../organisms/AnimationBacgroundPhoto";
 import MenuWithFinderFlame from "../organisms/MenuWithFinderFlame";
 import styled from "styled-components";
@@ -7,8 +6,8 @@ import styled from "styled-components";
 export default () => {
   return (
     <Top>
-      <MenuWithFinderFlame />
       <AnimationBackgroundPhoto />
+      <MenuWithFinderFlame />
     </Top>
   );
 };
