@@ -2,12 +2,13 @@ import * as React from "react";
 import styled from "styled-components";
 import defaultLinkList from "../molecules/LinkList";
 import defaultFinderFlame from "../atoms/FinderFlame";
+import { ABOUT, PHOTOS, CONTACT } from "../../Router/PagePath";
 
 const menuWithFinderFlame = () => {
   const links = [
-    { title: "POHOTOS", src: "/photos" },
-    { title: "ABOUT", src: "/about" },
-    { title: "CONTACT", src: "/contact" }
+    { title: "PHOTOS", src: PHOTOS },
+    { title: "ABOUT", src: ABOUT },
+    { title: "CONTACT", src: CONTACT }
   ];
   return (
     <MenuWithFinderFlame>
