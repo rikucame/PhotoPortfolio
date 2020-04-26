@@ -1,44 +1,45 @@
-import React from "react";
-import defaultBackgroundPhoto from "../atoms/BackgroundPhoto";
-import ClassNames from "classnames";
-import styled from "styled-components";
-
-const { useState, useEffect } = React;
-
-const CheckWidthHeight = () => {
-  const width = window.outerWidth;
-  const height = window.outerHeight;
-  return height / width < 0.66666666 ? true : false;
-};
+import React, { useState, useEffect } from "react"
+import { useTransition, animated, config } from "react-spring"
 
 const AnimationBackgroundPhoto = () => {
-  const backgroundPhotoDirectory = `${process.env.PUBLIC_URL}/photo/background/`;
-  const [photoPath, setPhotoPath] = useState(
-    `${backgroundPhotoDirectory}01.jpg`
-  );
-  const [currentPhoto, setCurrentPhoto] = useState(1);
-  const [isWide, setIsWide] = useState(CheckWidthHeight());
-  const backgroundImageClass = ClassNames({
-    "horizontally-fit": isWide,
-    "vertically-fit": !isWide
-  });
+  const [currentPhoto, setCurrentPhoto] = useState(0)
+  const transitions = useTransition(currentPhoto, (item) => item, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: config.molasses,
+  })
 
-  useEffect(() => {
-    setTimeout(() => {
-      setCurrentPhoto(currentPhoto === 4 ? 1 : currentPhoto + 1);
-      setPhotoPath(`${backgroundPhotoDirectory}0${currentPhoto}.jpg`);
-      console.log("hoge");
-    }, 4000);
-  }, [currentPhoto]);
+  useEffect(
+    () =>
+      void setInterval(
+        () => setCurrentPhoto((currentPhoto) => (currentPhoto + 1) % 4),
+        5000
+      ),
+    []
+  )
 
-  return <BackgroundPhoto url={photoPath} />;
-};
+  return (
+    <React.Fragment>
+      {transitions.map(({ item, props, key }) => (
+        <animated.div
+          key={key}
+          style={{
+            ...props,
+            backgroundImage: `url(${process.env.PUBLIC_URL}/photo/background/${item}.jpg)`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            width: "100%",
+            height: "50%",
+            position: "absolute",
+            top: 0,
+            left: 0,
+          }}
+        />
+      ))}
+    </React.Fragment>
+  )
+}
 
-const BackgroundPhoto = styled(defaultBackgroundPhoto)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-size: cover;
-`;
-
-export default AnimationBackgroundPhoto;
+export default AnimationBackgroundPhoto
