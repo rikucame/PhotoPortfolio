@@ -1,47 +1,64 @@
-import * as React from "react";
-import styled from "styled-components";
-import defaultLinkList from "../molecules/LinkList";
-import defaultFinderFlame from "../atoms/FinderFlame";
-import { ABOUT, PHOTOS, CONTACT } from "../../Router/PagePath";
+import * as React from "react"
+import styled from "styled-components"
+import defaultLinkText from "../atoms/LinkText"
+import defaultFinderFlame from "../atoms/FinderFlame"
+import { ABOUT, PHOTOS, BLOG } from "../../Router/PagePath"
+import { mediaSP, mediaTB } from "../theme/mediaQuery"
 
-const menuWithFinderFlame = () => {
+interface propsInterface {
+  className?: string
+}
+
+const menuWithFinderFlame = (props: propsInterface) => {
   const links = [
     { title: "PHOTOS", src: PHOTOS },
     { title: "ABOUT", src: ABOUT },
-    { title: "CONTACT", src: CONTACT }
-  ];
+    { title: "BLOG", src: BLOG },
+  ]
   return (
-    <MenuWithFinderFlame>
-      <LinkList links={links} />
+    <MenuWithFinderFlame className={props.className}>
+      <MenuList>
+        {links.map((link) => {
+          return <LinkText title={link.title} src={link.src} />
+        })}
+      </MenuList>
       <FinderFlame />
     </MenuWithFinderFlame>
-  );
-};
+  )
+}
 
 const MenuWithFinderFlame = styled.div`
-  width: 100%;
-  height: 100%;
   position: relative;
   display: flex;
-  align-items: center;
-`;
+  align-items: flex-end;
+`
 
-const LinkList = styled(defaultLinkList)`
-  && {
-    font-size: 4.5vh;
-    margin-left: calc(10% + 1px);
-    transform: translateY(60%);
-    padding-left: 1px;
-    border-left: solid 1px #222;
-    z-index: 100;
-  }
-`;
+const MenuList = styled.menu`
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  margin-bottom: 17vh;
+  ${mediaTB`
+    margin-bottom: calc(130px);
+  `};
+`
+
+const LinkText = styled(defaultLinkText)`
+  text-align: left;
+  padding-left: 5px;
+  font-size: 65px;
+  line-height: 1;
+  z-index: 100;
+  ${mediaSP`
+    font-size: 45px;
+  `};
+`
 const FinderFlame = styled(defaultFinderFlame)`
   position: absolute;
   z-index: 10;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-`;
+`
 
-export default menuWithFinderFlame;
+export default menuWithFinderFlame

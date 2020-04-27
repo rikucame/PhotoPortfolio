@@ -1,8 +1,8 @@
-import * as React from "react";
-import styled from "styled-components";
+import * as React from "react"
+import styled from "styled-components"
 
 interface propsInterface {
-  className?: string;
+  className?: string
 }
 
 const finderFlame = (props: propsInterface) => {
@@ -11,72 +11,53 @@ const finderFlame = (props: propsInterface) => {
       <FinderFlameTop />
       <FinderFlameBottom />
     </FinderFlameWrap>
-  );
-};
+  )
+}
 
-const boxStyle = {
-  length: "9vw",
-  minLength: "40px",
-  maxLength: "80px",
-  borderParam: "1px solid #222"
-};
+const borderParam = "2px solid #111"
 
 const FinderFlameWrap = styled.div`
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-`;
-const FinderFlameTop = styled.div`
+`
+const finderFlameCommon = styled.div`
   width: 100%;
   position: relative;
   &::before,
   &::after {
     content: "";
     position: absolute;
-    top: 0;
-    width: ${boxStyle.length};
-    height: ${boxStyle.length};
-    min-width: ${boxStyle.minLength};
-    min-height: ${boxStyle.minLength};
-    max-width: ${boxStyle.maxLength};
-    max-height: ${boxStyle.maxLength};
-    border-top: ${boxStyle.borderParam};
+    width: 12vw;
+    min-width: 60px;
+    height: 10vh;
+    min-height: 90px;
   }
   &::before {
     left: 0;
-    border-left: ${boxStyle.borderParam};
+    border-left: ${borderParam};
   }
   &::after {
     right: 0;
-    border-right: ${boxStyle.borderParam};
+    border-right: ${borderParam};
   }
-`;
-const FinderFlameBottom = styled.div`
-  width: 100%;
-  position: relative;
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    width: ${boxStyle.length};
-    height: ${boxStyle.length};
-    min-width: ${boxStyle.minLength};
-    min-height: ${boxStyle.minLength};
-    max-width: ${boxStyle.maxLength};
-    max-height: ${boxStyle.maxLength};
-    border-bottom: ${boxStyle.borderParam};
-  }
-  &::before {
-    left: 0;
-    border-left: ${boxStyle.borderParam};
-  }
-  &::after {
-    right: 0;
-    border-right: ${boxStyle.borderParam};
-  }
-`;
+`
 
-export default finderFlame;
+const FinderFlameTop = styled(finderFlameCommon)`
+  &::before,
+  &::after {
+    top: 0;
+    border-top: ${borderParam};
+  }
+`
+const FinderFlameBottom = styled(finderFlameCommon)`
+  &::before,
+  &::after {
+    bottom: 0;
+    border-bottom: ${borderParam};
+  }
+`
+
+export default finderFlame

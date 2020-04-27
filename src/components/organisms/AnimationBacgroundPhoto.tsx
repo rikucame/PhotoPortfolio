@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react"
 import { useTransition, animated, config } from "react-spring"
+interface propsInterface {
+  className?: string
+}
 
-const AnimationBackgroundPhoto = () => {
+const compareLength = () =>
+  window.outerWidth <= window.outerHeight ? "horizontal" : "vertical"
+
+const AnimationBackgroundPhoto = (props: propsInterface) => {
   const [currentPhoto, setCurrentPhoto] = useState(0)
+  const [direction, setDirection] = useState(compareLength())
+  const className = props.className
   const transitions = useTransition(currentPhoto, (item) => item, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
@@ -12,10 +20,10 @@ const AnimationBackgroundPhoto = () => {
 
   useEffect(
     () =>
-      void setInterval(
-        () => setCurrentPhoto((currentPhoto) => (currentPhoto + 1) % 4),
-        5000
-      ),
+      void setInterval(() => {
+        setDirection(compareLength())
+        setCurrentPhoto((currentPhoto) => (currentPhoto + 1) % 4)
+      }, 5000),
     []
   )
 
@@ -23,18 +31,11 @@ const AnimationBackgroundPhoto = () => {
     <React.Fragment>
       {transitions.map(({ item, props, key }) => (
         <animated.div
+          className={className}
           key={key}
           style={{
             ...props,
-            backgroundImage: `url(${process.env.PUBLIC_URL}/photo/background/${item}.jpg)`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            width: "100%",
-            height: "50%",
-            position: "absolute",
-            top: 0,
-            left: 0,
+            backgroundImage: `url(${process.env.PUBLIC_URL}/photo/background/${direction}/${item}.jpg)`,
           }}
         />
       ))}
