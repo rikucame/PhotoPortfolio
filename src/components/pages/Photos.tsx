@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-export default () => {  
+export default () => {
   return (
     <div className="photos">
-        <p>PHOTOSです</p>
+      <p>PHOTOSです</p>
     </div>
   );
-}
+};

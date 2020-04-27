@@ -1,19 +1,48 @@
-import * as React from 'react';
-import LinkLabel from '../atoms/LinkLabel';
+import * as React from "react";
+import styled from "styled-components";
+import defaultLinkText from "../atoms/LinkText";
 
-const LinkList = () => {
-    const links = [
-        {title:'POHOTOS', src:'/photos'},
-        {title:'ABOUT', src:'/about'},
-        {title:'CONTACT', src:'/contact'},
-    ]
-    return(
-        <ul className='link-list'>
-            {links.map((link) => {
-            return(<LinkLabel src={link.src} title={link.title} />)
-            })}
-        </ul>
-    )
+interface propsInterface {
+  className?: string;
+  links: linksInterface[];
 }
 
-export default LinkList;
+interface linksInterface {
+  title: string;
+  src: string;
+}
+
+const linkList = (props: propsInterface) => {
+  // const links = [
+  //   { title: "POHOTOS", src: "/photos" },
+  //   { title: "ABOUT", src: "/about" },
+  //   { title: "CONTACT", src: "/contact" }
+  // ];
+  return (
+    <LinkList className={props.className}>
+      {props.links.map(link => {
+        return (
+          <LinkItem>
+            <LinkText src={link.src} title={link.title} />
+          </LinkItem>
+        );
+      })}
+    </LinkList>
+  );
+};
+
+const LinkText = styled(defaultLinkText)`
+  font-size: 4.5vh;
+`;
+
+const LinkList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const LinkItem = styled.li`
+  list-style: none;
+`;
+
+export default linkList;
