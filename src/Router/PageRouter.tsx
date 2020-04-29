@@ -8,8 +8,8 @@ import {
 import Top from "../components/pages/Top";
 import About from "../components/pages/About";
 import Photos from "../components/pages/Photos";
-import Contact from "../components/pages/Contact";
-import { ROOT, ABOUT, PHOTOS, CONTACT } from "./PagePath";
+import Blog from "../components/pages/Blog";
+import { ROOT, ABOUT, PHOTOS, BLOG } from "./PagePath";
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -20,7 +20,7 @@ const PageRouter = ({ location }: Props) => {
       <Route exact path={ROOT} component={Top} />
       <Route path={ABOUT} component={About} />
       <Route path={PHOTOS} component={Photos} />
-      <Route path={CONTACT} component={Contact} />
+      <Route path={BLOG} component={Blog} />
     </Switch>
   );
 };
