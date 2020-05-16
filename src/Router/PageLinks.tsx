@@ -1,4 +1,8 @@
-export const ROOT = "/"
+export const ROOT = {
+  title: "TOP",
+  link: "/",
+  secondLevel: [],
+}
 export const PHOTOS = {
   title: "PHOTOS",
   link: "/photos",
@@ -18,4 +22,4 @@ export const BLOG = {
   secondLevel: [],
 }
 
-export const PATHLIST = [ABOUT, PHOTOS, BLOG]
+export const PATHLIST = [ROOT, PHOTOS, ABOUT, BLOG]

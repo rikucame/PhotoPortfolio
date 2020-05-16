@@ -1,5 +1,8 @@
-import mediaQuery from "styled-media-query"
+import media from "styled-media-query"
 
-export const mediaTB = mediaQuery.lessThan("medium")
+export const mediaTB = media.lessThan("medium")
 
-export const mediaSP = mediaQuery.lessThan("small")
+export const mediaSP = media.lessThan("small")
+
+export const mediaPC = media.between("medium", "large")
+

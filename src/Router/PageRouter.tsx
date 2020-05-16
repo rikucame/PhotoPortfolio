@@ -17,7 +17,7 @@ const PageRouter = ({ location }: Props) => {
   console.log(location.pathname)
   return (
     <Switch>
-      <Route exact path={ROOT} component={Top} />
+      <Route exact path={ROOT.link} component={Top} />
       <Route path={ABOUT.link} component={About} />
       <Route path={PHOTOS.link} component={Photos} />
       <Route path={BLOG.link} component={Blog} />
