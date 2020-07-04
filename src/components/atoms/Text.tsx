@@ -3,10 +3,11 @@ import styled from "styled-components"
 
 interface propsInterface {
   className?: string
+  children: string
 }
 
 const text = (props: propsInterface) => {
-  return <Text className={props.className} />
+  return <Text className={props.className}>{props.children}</Text>
 }
 
 const Text = styled.p`
@@ -16,4 +17,4 @@ const Text = styled.p`
   padding: 0 10px;
 `
 
-export default Text
+export default text

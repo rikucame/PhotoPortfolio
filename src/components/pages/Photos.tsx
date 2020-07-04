@@ -5,14 +5,7 @@ import defaultPhoto from "../atoms/Photo"
 import Header from "../organisms/Header"
 import Footer from "../organisms/Footer"
 import { pageWrap, pageMain } from "../theme/Components"
-import { getAspectRatio } from "../theme/Functions"
-import {
-  mediaPCL,
-  mediaPC,
-  mediaTB,
-  SP,
-  breakPointTB,
-} from "../theme/MediaQuery"
+import { mediaPCL, breakPointTB } from "../theme/MediaQuery"
 
 export default () => {
   console.log(mediaPCL)
