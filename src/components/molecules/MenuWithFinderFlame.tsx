@@ -10,14 +10,13 @@ interface propsInterface {
 }
 
 const menuWithFinderFlame = (props: propsInterface) => {
+  PATHLIST.shift()
   return (
     <MenuWithFinderFlame className={props.className}>
       <MenuList>
-        {PATHLIST.map((path) => {
-          if (path.title !== "TOP") {
-            return <LinkText title={path.title} link={path.link} />
-          }
-        })}
+        {PATHLIST.map((path) => (
+          <LinkText title={path.title} link={path.link} />
+        ))}
       </MenuList>
       <FinderFlame />
     </MenuWithFinderFlame>
