@@ -6,10 +6,7 @@ export const ROOT = {
 export const PHOTOS = {
   title: "PHOTOS",
   link: "/photos",
-  secondLevel: [
-    { title: "PORTRAITS", link: `/photos/portraits/` },
-    { title: "OTHERS", link: "/photos/others" },
-  ],
+  secondLevel: [{ title: "PORTRAITS", link: `/photos/portraits/` }],
 }
 export const ABOUT = {
   title: "ABOUT",

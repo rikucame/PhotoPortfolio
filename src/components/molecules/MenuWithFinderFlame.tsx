@@ -2,24 +2,21 @@ import * as React from "react"
 import styled from "styled-components"
 import defaultLinkText from "../atoms/LinkText"
 import defaultFinderFlame from "../atoms/FinderFlame"
-import { ABOUT, PHOTOS, BLOG } from "../../Router/PagePath"
-import { mediaSP, mediaTB } from "../theme/mediaQuery"
+import { PATHLIST } from "../../router/PageLinks"
+import { SP } from "../theme/MediaQuery"
 
 interface propsInterface {
   className?: string
 }
 
 const menuWithFinderFlame = (props: propsInterface) => {
-  const links = [
-    { title: "PHOTOS", src: PHOTOS },
-    { title: "ABOUT", src: ABOUT },
-    { title: "BLOG", src: BLOG },
-  ]
   return (
     <MenuWithFinderFlame className={props.className}>
       <MenuList>
-        {links.map((link) => {
-          return <LinkText title={link.title} src={link.src} />
+        {PATHLIST.map((path) => {
+          if (path.title !== "TOP") {
+            return <LinkText title={path.title} link={path.link} />
+          }
         })}
       </MenuList>
       <FinderFlame />
@@ -33,25 +30,22 @@ const MenuWithFinderFlame = styled.div`
   align-items: flex-end;
 `
 
-const MenuList = styled.menu`
+const MenuList = styled.nav`
   display: flex;
   flex-direction: column;
   align-content: flex-start;
   margin-bottom: 17vh;
-  ${mediaTB`
-    margin-bottom: calc(130px);
-  `};
 `
 
 const LinkText = styled(defaultLinkText)`
+  @media ${SP} {
+    font-size: 40px;
+  }
   text-align: left;
   padding-left: 5px;
-  font-size: 65px;
+  font-size: 55px;
   line-height: 1;
   z-index: 100;
-  ${mediaSP`
-    font-size: 45px;
-  `};
 `
 const FinderFlame = styled(defaultFinderFlame)`
   position: absolute;

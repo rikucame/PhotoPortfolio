@@ -1,21 +1,20 @@
 import React from "react"
 import defaultAnimationBackgroundPhoto from "../organisms/AnimationBacgroundPhoto"
-import defaultFinderFlame from "../organisms/MenuWithFinderFlame"
+import defaultMenuWithFinderFlame from "../molecules/MenuWithFinderFlame"
 import styled from "styled-components"
+import { pageWrap } from "../theme/Components"
 
 export default () => {
   return (
     <Top>
       <AnimationBackgroundPhoto />
-      <FinderFlame />
+      <MenuWithFinderFlame />
     </Top>
   )
 }
 
-const Top = styled.div`
+const Top = styled(pageWrap)`
   text-align: center;
-  width: 100%;
-  height: 100%;
   position: relative;
   overflow: hidden;
 `
@@ -31,7 +30,7 @@ const AnimationBackgroundPhoto = styled(defaultAnimationBackgroundPhoto)`
   left: 0;
 `
 
-const FinderFlame = styled(defaultFinderFlame)`
+const MenuWithFinderFlame = styled(defaultMenuWithFinderFlame)`
   width: 90%;
   height: 90%;
   top: 50%;
