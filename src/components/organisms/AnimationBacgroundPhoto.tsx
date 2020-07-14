@@ -1,29 +1,36 @@
 import React, { useState, useEffect } from "react"
 import { useTransition, animated, config } from "react-spring"
+import { horizontalPhotos, verticalPhotos } from "../theme/ImagePath"
 interface propsInterface {
   className?: string
 }
 
 const compareLength = () =>
-  window.outerWidth <= window.outerHeight ? "horizontal" : "vertical"
+  window.outerWidth <= window.outerHeight ? horizontalPhotos : verticalPhotos
 
 const AnimationBackgroundPhoto = (props: propsInterface) => {
-  const [currentPhoto, setCurrentPhoto] = useState(0)
-  const [direction, setDirection] = useState(compareLength())
   const className = props.className
-  const transitions = useTransition(currentPhoto, (item) => item, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    config: config.molasses,
-  })
+  const [currentPhoto, setCurrentPhoto] = useState(0)
+  const [directionPhotos, setDirectionPhotos] = useState(compareLength())
+  const transitions = useTransition(
+    directionPhotos[currentPhoto],
+    (item) => item,
+    {
+      from: { opacity: 0 },
+      enter: { opacity: 1 },
+      leave: { opacity: 0 },
+      config: config.molasses,
+    }
+  )
 
   useEffect(
     () =>
       void setInterval(() => {
-        setDirection(compareLength())
-        setCurrentPhoto((currentPhoto) => (currentPhoto + 1) % 4)
-      }, 5000),
+        setDirectionPhotos(compareLength())
+        setCurrentPhoto(
+          (currentPhoto) => (currentPhoto + 1) % horizontalPhotos.length
+        )
+      }, 4000),
     []
   )
 
@@ -35,7 +42,7 @@ const AnimationBackgroundPhoto = (props: propsInterface) => {
           key={key}
           style={{
             ...props,
-            backgroundImage: `url(${process.env.PUBLIC_URL}/photo/background/${direction}/${item}.jpg)`,
+            backgroundImage: `url(${item})`,
           }}
         />
       ))}
